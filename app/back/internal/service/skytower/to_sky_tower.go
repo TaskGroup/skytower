@@ -1,4 +1,4 @@
-package to_sky_tower
+package skytower
 
 import (
 	"encoding/json"

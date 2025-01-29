@@ -6,7 +6,7 @@ import (
 	"log"
 	"main/config"
 	"main/internal/model/skytower"
-	to_sky_tower "main/internal/service"
+	to_sky_tower "main/internal/service/skytower"
 )
 
 type SkyTower struct {
