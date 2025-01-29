@@ -62,7 +62,7 @@ func (a *RequestToSkyTower) UserInventory(idObjSync int64) (*skytower.UserInvent
 	apiRes := Res{}
 	query := url.Values{}
 	query.Add("user_id", strconv.FormatInt(idObjSync, 10))
-	err := a.sendAndHandleRequest(http.MethodPost, UrlSendMessage, nil, nil, &apiRes)
+	err := a.sendAndHandleRequest(http.MethodGet, UrlUserInventory, nil, nil, &apiRes)
 	if err != nil {
 		return nil, err
 	}
