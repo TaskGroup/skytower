@@ -1,4 +1,4 @@
-module main
+module github.com/TaskGroup/skytower/app/back
 
 go 1.21.6
 
