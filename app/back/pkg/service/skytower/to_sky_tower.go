@@ -3,7 +3,7 @@ package skytower
 import (
 	"encoding/json"
 	"fmt"
-	"main/pkg/service/do_request"
+	"github.com/TaskGroup/skytower/app/back/pkg/service/do_request"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -123,7 +123,7 @@ func (a *RequestToSkyTower) send(httpMethod, uri string, bJson []byte, query url
 		}
 	}
 	if err != nil {
-		// Todo Сюда логирование fmt.Errorf("cannot do SendRequest %s: %w", uri, err)
+		// Todo Сюда логирование fmt.Errorf("cannot do SendRequest %s: %w", uri, err) s
 		return nil, statusCode, err
 	}
 

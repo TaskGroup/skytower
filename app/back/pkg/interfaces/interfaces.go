@@ -2,7 +2,7 @@ package interfaces
 
 import (
 	"context"
-	"main/pkg/model/skytower"
+	"github.com/TaskGroup/skytower/app/back/pkg/model/skytower"
 )
 
 type ISkyTowerProvider interface {

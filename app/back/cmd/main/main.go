@@ -3,10 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/TaskGroup/skytower/app/back/config"
+	"github.com/TaskGroup/skytower/app/back/pkg/model/skytower"
+	doSky "github.com/TaskGroup/skytower/app/back/pkg/service/skytower"
 	"log"
-	"main/config"
-	"main/internal/model/skytower"
-	to_sky_tower "main/internal/service/skytower"
 )
 
 type SkyTower struct {
@@ -35,7 +35,7 @@ func main() {
 }
 
 func newSkyTower(host, username, pwd string) (SkyTower, error) {
-	st, err := to_sky_tower.New(host, username, pwd)
+	st, err := doSky.New(host, username, pwd)
 	if err != nil {
 		err = fmt.Errorf("Error creating to_sky_tower: " + err.Error())
 		return SkyTower{}, err

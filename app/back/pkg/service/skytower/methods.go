@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"main/pkg/model/skytower"
+	"github.com/TaskGroup/skytower/app/back/pkg/model/skytower"
 	"net/http"
 	"net/url"
 	"strconv"
