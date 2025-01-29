@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+    skytower:
+        build:
+            context: .
+            dockerfile: docker-local/back/Dockerfile
+        working_dir: /var/www/html/app/back
+        volumes:
+            - ./app/back:/var/www/html/app/back
+            - ./docker-local/back/back.sh:/back.sh
+        container_name: skytower
+        image: golang:1.21
+        entrypoint: /back.sh
+        environment:
+            - TZ=Europe/Moscow
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.50'
+                    memory: '256M'
+                reservations:
+                    cpus: '0.25'
+                    memory: '128M'

@@ -1,0 +1,5 @@
+api_auth:
+  host_url: "skytower-game.ru"
+  login: "login"
+  password: "pass"
+  secret_key: "secREtkEy"
