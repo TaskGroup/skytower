@@ -3,7 +3,7 @@ package skytower
 import (
 	"encoding/json"
 	"fmt"
-	"main/internal/service/do_request"
+	"main/pkg/service/do_request"
 	"net/http"
 	"net/url"
 	"strconv"

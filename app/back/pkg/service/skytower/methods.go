@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"main/internal/model/skytower"
+	"main/pkg/model/skytower"
 	"net/http"
 	"net/url"
 	"strconv"

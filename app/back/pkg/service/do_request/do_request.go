@@ -116,7 +116,11 @@ func (c *Client) DoRequest(method string, query url.Values) ([]byte, int, error)
 	}
 	res, err1 := c.client.Do(req)
 	if err1 != nil {
-		return nil, res.StatusCode, fmt.Errorf("cannot do request 2: %w", err1)
+		sCode := 0
+		if res != nil {
+			sCode = res.StatusCode
+		}
+		return nil, sCode, fmt.Errorf("cannot do request 2: %w", err1)
 	}
 	defer func() { _ = res.Body.Close() }()
 	body, err2 := io.ReadAll(res.Body)
