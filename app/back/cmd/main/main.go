@@ -15,6 +15,8 @@ type SkyTower struct {
 
 type ISkyTower interface {
 	Objects(ctx context.Context) ([]skytower.Object, error)
+	Players(ctx context.Context) ([]skytower.Player, error)
+	Monsters(ctx context.Context) ([]skytower.Monster, error)
 	UserInventory(idObjSync int64) (*skytower.UserInventory, error)
 	CreateClan(idObjSync int64) error
 }
@@ -33,6 +35,20 @@ func main() {
 		return
 	}
 	fmt.Println("len(obList): ", len(obList))
+
+	playerList, err := sky.Sky.Players(ctx)
+	if err != nil {
+		log.Fatal(err.Error())
+		return
+	}
+	fmt.Println("len(playerList): ", len(playerList))
+
+	monsterList, err := sky.Sky.Monsters(ctx)
+	if err != nil {
+		log.Fatal(err.Error())
+		return
+	}
+	fmt.Println("len(monsterList): ", len(monsterList))
 
 	//fmt.Println("CLAn CREATE!")
 	//err = sky.Sky.CreateClan(123232)

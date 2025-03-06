@@ -70,20 +70,33 @@ type InventoryItem struct {
 	Count int64  `json:"count" db:"count"`
 }
 
-type ApiMonsterSkyTower struct {
-	Id        int64  `json:"id"`
-	IsDeleted bool   `json:"isdeleted"`
-	Name      string `json:"name"`
-	Types     string `json:"types"`
-	UrlPhoto  string `json:"url_photo"`
-}
-
-type ApiMonstersSkyTower []ApiMonsterSkyTower
-
 type ObjectsInventory struct {
 	Object []Object `json:"objects"`
 }
 
 type OnlyId struct {
 	Id int64 `json:"id" db:"id"`
+}
+
+type Player struct {
+	DateCr     string  `json:"datecr"`
+	DateCrVip  *string `json:"datecr_vip" `
+	DateEndVip *string `json:"dateend_vip"`
+	FirstName  string  `json:"first_name"`
+	Gender     *bool   `json:"gender"`
+	Id         int64   `json:"id"`
+	IdVip      *int64  `json:"id_vip"`
+	LastName   string  `json:"last_name"`
+	Level      *int    `json:"level"`
+	Nickname   *string `json:"nickname"`
+	Username   string  `json:"username"`
+	RaceStr    string  `json:"name_races"`
+}
+
+type Monster struct {
+	Id        int64  `json:"id"`
+	IsDeleted bool   `json:"isdeleted"`
+	Name      string `json:"name"`
+	Types     string `json:"types"`
+	UrlPhoto  string `json:"url_photo"`
 }

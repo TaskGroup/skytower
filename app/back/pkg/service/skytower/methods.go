@@ -112,10 +112,10 @@ func (a *RequestToSkyTower) MoneyByPlayerId(ctx context.Context, idObjSync int64
 }
 
 // Получение всех монстров из Башни
-func (a *RequestToSkyTower) Monsters(host, username, pass string) (skytower.ApiMonstersSkyTower, error) {
+func (a *RequestToSkyTower) Monsters(ctx context.Context) ([]skytower.Monster, error) {
 	type Res struct {
 		skytower.DefaultResponse
-		Data skytower.ApiMonstersSkyTower `json:"data"`
+		Data []skytower.Monster `json:"data"`
 	}
 	apiRes := Res{}
 	err := a.sendAndHandleRequest(http.MethodGet, "/enemy/all/get", nil, nil, &apiRes)
@@ -199,4 +199,20 @@ func (a *RequestToSkyTower) UpdateBuffByPlayer(playerId int64) error {
 	apiRes := Res{}
 	urlForSend := UrlPlayerBuffUpdate + "/" + strconv.FormatInt(playerId, 10)
 	return a.sendAndHandleRequest(http.MethodPost, urlForSend, nil, nil, &apiRes)
+}
+
+func (a *RequestToSkyTower) Players(ctx context.Context) ([]skytower.Player, error) {
+	type Res struct {
+		Error   int               `json:"error"`
+		Message *string           `json:"message"`
+		Data    []skytower.Player `json:"data"`
+	}
+	apiRes := Res{}
+	if err := a.sendRequest(http.MethodGet, "/user/get", nil, nil, &apiRes); err != nil {
+		return nil, err
+	}
+	if apiRes.Error == 1 {
+		return nil, fmt.Errorf("Players: error code = %d, error_msg = %s", apiRes.Error, apiRes.Message)
+	}
+	return apiRes.Data, nil
 }
