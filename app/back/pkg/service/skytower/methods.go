@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
+	"strings"
 )
 
 var (
@@ -78,9 +79,12 @@ func (a *RequestToSkyTower) UserInventoryAndOneItem(ctx context.Context, userObj
 	} else if items == nil {
 		return res, fmt.Errorf("UserInventoryAndOneItem %s not found", itemName)
 	}
+	itemName = strings.ToLower(itemName)
 	res.FreeSlot = items.CountFree
 	for _, item := range items.ListObject {
-		if item.Name == itemName {
+		name := item.Name
+		name = strings.ToLower(name)
+		if name == itemName {
 			inventoryItem := skytower.InventoryItem{
 				Id:    item.IdObject,
 				Name:  item.Name,
